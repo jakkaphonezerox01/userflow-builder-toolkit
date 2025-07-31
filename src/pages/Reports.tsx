@@ -54,20 +54,22 @@ const Reports = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-950 via-gray-900 to-gray-950 relative">
-      {/* Animated background elements */}
+    <div className="min-h-screen bg-gradient-background relative">
+      {/* Enhanced animated background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-red-600/10 rounded-full blur-3xl animate-float"></div>
-        <div className="absolute top-3/4 right-1/4 w-64 h-64 bg-orange-600/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '1s' }}></div>
-        <div className="absolute top-1/2 left-1/2 w-32 h-32 bg-purple-600/10 rounded-full blur-2xl animate-float" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute top-1/4 left-1/4 w-80 h-80 bg-destructive/5 rounded-full blur-3xl animate-float"></div>
+        <div className="absolute top-3/4 right-1/4 w-64 h-64 bg-destructive/8 rounded-full blur-3xl animate-float" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute top-1/2 left-1/2 w-48 h-48 bg-destructive/3 rounded-full blur-2xl animate-float" style={{ animationDelay: '2s' }}></div>
       </div>
 
       <div className="max-w-2xl mx-auto p-6 relative z-10">
         <div className="animate-fade-in">
-          <Card className="bg-gradient-to-br from-gray-800/90 to-gray-900/90 border border-gray-700/50 backdrop-blur-sm shadow-2xl hover:border-red-500/30 transition-all duration-300">
-            <CardHeader className="border-b border-gray-700/50 bg-gradient-to-r from-transparent to-red-600/5">
-              <CardTitle className="text-white text-2xl flex items-center gap-3">
-                <AlertTriangle className="h-6 w-6 text-red-400" />
+          <Card className="bg-gradient-card border border-border/50 backdrop-blur-xl shadow-elegant hover:shadow-glow interactive-card">
+            <CardHeader className="border-b border-border/50 bg-gradient-to-r from-transparent to-destructive/5 pb-6">
+              <CardTitle className="text-foreground text-2xl flex items-center gap-3 font-inter">
+                <div className="p-2 bg-destructive/10 rounded-lg border border-destructive/20">
+                  <AlertTriangle className="h-6 w-6 text-destructive" />
+                </div>
                 ส่งรายงาน
               </CardTitle>
             </CardHeader>
@@ -80,13 +82,13 @@ const Reports = () => {
                     name="reportTitle"
                     render={({ field }) => (
                       <FormItem className="group">
-                        <FormLabel className="text-white font-medium group-hover:text-red-400 transition-colors duration-200">
+                        <FormLabel className="text-foreground font-medium group-hover:text-destructive transition-colors duration-200 font-inter">
                           หัวข้อรายงาน:
                         </FormLabel>
                         <FormControl>
                           <Input
                             placeholder="หัวข้อเรื่องที่ต้องการรายงาน"
-                            className="bg-gradient-to-r from-gray-900 to-gray-800 border-gray-700/50 text-white placeholder:text-gray-500 focus:border-red-500/50 focus:ring-red-500/20 hover:border-red-500/30 transition-all duration-200"
+                            className="bg-gradient-secondary border border-border text-foreground placeholder:text-muted-foreground focus:border-destructive/50 focus:ring-destructive/20 hover:border-destructive/30 transition-all duration-200 shadow-card hover:shadow-elegant font-inter"
                             {...field}
                           />
                         </FormControl>
@@ -101,13 +103,13 @@ const Reports = () => {
                     name="reportDetails"
                     render={({ field }) => (
                       <FormItem className="group">
-                        <FormLabel className="text-white font-medium group-hover:text-red-400 transition-colors duration-200">
+                        <FormLabel className="text-foreground font-medium group-hover:text-destructive transition-colors duration-200 font-inter">
                           รายละเอียดรายงาน:
                         </FormLabel>
                         <FormControl>
                           <Textarea
                             placeholder="กรอกรายละเอียดที่องมุด"
-                            className="bg-gradient-to-r from-gray-900 to-gray-800 border-gray-700/50 text-white placeholder:text-gray-500 focus:border-red-500/50 focus:ring-red-500/20 hover:border-red-500/30 transition-all duration-200 min-h-[150px] resize-none"
+                            className="bg-gradient-secondary border border-border text-foreground placeholder:text-muted-foreground focus:border-destructive/50 focus:ring-destructive/20 hover:border-destructive/30 transition-all duration-200 min-h-[150px] resize-none shadow-card hover:shadow-elegant font-inter"
                             {...field}
                           />
                         </FormControl>
@@ -120,11 +122,11 @@ const Reports = () => {
                   <Button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700 text-white font-medium py-4 shadow-lg shadow-red-500/25 hover:shadow-red-500/40 transition-all duration-200 hover:scale-105 text-lg"
+                    className="w-full bg-gradient-to-r from-destructive to-red-600 hover:from-destructive/90 hover:to-red-700 text-destructive-foreground font-medium py-4 shadow-lg shadow-destructive/25 hover:shadow-destructive/40 interactive-button text-lg font-inter"
                   >
                     {isSubmitting ? (
                       <div className="flex items-center gap-2">
-                        <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
+                        <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-destructive-foreground"></div>
                         กำลังส่ง...
                       </div>
                     ) : (
@@ -138,15 +140,18 @@ const Reports = () => {
               </Form>
 
               {/* คำแนะนำ */}
-              <div className="mt-6 p-4 bg-gradient-to-r from-yellow-600/10 to-orange-600/10 border border-yellow-600/20 rounded-lg">
+              <div className="mt-8 p-6 bg-gradient-to-r from-amber-500/5 to-orange-500/10 border border-amber-500/20 rounded-lg backdrop-blur-sm">
                 <div className="flex items-start gap-3">
-                  <AlertTriangle className="h-5 w-5 text-yellow-400 mt-0.5" />
-                  <div className="text-sm text-yellow-100">
-                    <p className="font-medium mb-1">คำแนะนำในการรายงาน:</p>
-                    <ul className="space-y-1 text-yellow-200">
+                  <div className="p-2 bg-amber-500/10 rounded-lg border border-amber-500/20">
+                    <AlertTriangle className="h-5 w-5 text-amber-500" />
+                  </div>
+                  <div className="text-sm text-foreground font-inter">
+                    <p className="font-semibold mb-2 text-amber-600 dark:text-amber-400">คำแนะนำในการรายงาน:</p>
+                    <ul className="space-y-1 text-muted-foreground">
                       <li>• ระบุรายละเอียดให้ชัดเจนและครบถ้วน</li>
                       <li>• หากเป็นเรื่องเร่งด่วน กรุณาติดต่อแอดมินโดยตรง</li>
                       <li>• รายงานจะได้รับการตรวจสอบภายใน 24 ชั่วโมง</li>
+                      <li>• ใช้ภาษาที่สุภาพและสร้างสรรค์</li>
                     </ul>
                   </div>
                 </div>
