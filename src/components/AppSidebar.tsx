@@ -26,21 +26,23 @@ export function AppSidebar() {
 
   const isActive = (path: string) => currentPath === path;
   const getNavCls = ({ isActive }: { isActive: boolean }) =>
-    isActive ? "bg-gradient-to-r from-purple-600 to-pink-600 text-white font-medium rounded-lg mx-2" : "text-gray-300 hover:bg-gray-800 hover:text-white rounded-lg mx-2 transition-colors duration-200";
+    isActive 
+      ? "bg-gradient-to-r from-purple-600 to-pink-600 text-white font-medium rounded-lg mx-2 shadow-lg shadow-purple-500/25" 
+      : "text-gray-300 hover:bg-gradient-to-r hover:from-gray-800 hover:to-gray-700 hover:text-white rounded-lg mx-2 transition-all duration-200 ease-in-out hover:shadow-md";
 
   return (
     <Sidebar
-      className={`${state === "collapsed" ? "w-14" : "w-64"} bg-gray-900 border-r border-gray-800`}
+      className={`${state === "collapsed" ? "w-14" : "w-64"} bg-gradient-to-b from-gray-900 via-gray-900 to-gray-800 border-r border-gray-700/50 transition-all duration-300 ease-in-out`}
       collapsible="icon"
     >
-      <SidebarContent className="bg-gray-900">
-        <div className="p-6 border-b border-gray-800">
+      <SidebarContent className="bg-transparent">
+        <div className="p-6 border-b border-gray-700/50">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-pink-600 rounded-lg flex items-center justify-center">
+            <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-pink-600 rounded-lg flex items-center justify-center shadow-lg animate-glow">
               <span className="text-white font-bold text-sm">W</span>
             </div>
             {state !== "collapsed" && (
-              <div>
+              <div className="animate-fade-in">
                 <div className="text-white font-bold text-sm">WAIGON</div>
                 <div className="text-gray-400 text-xs">[WG]</div>
               </div>
@@ -51,12 +53,20 @@ export function AppSidebar() {
         <SidebarGroup>
           <SidebarGroupContent>
             <SidebarMenu className="mt-4 space-y-1">
-              {items.map((item) => (
-                <SidebarMenuItem key={item.title}>
+              {items.map((item, index) => (
+                <SidebarMenuItem key={item.title} className="animate-fade-in" style={{ animationDelay: `${index * 100}ms` }}>
                   <SidebarMenuButton asChild>
-                    <NavLink to={item.url} end className={getNavCls}>
-                      <item.icon className="h-5 w-5" />
-                      {state !== "collapsed" && <span className="ml-3 font-medium">{item.title}</span>}
+                    <NavLink 
+                      to={item.url} 
+                      end 
+                      className={`${getNavCls({ isActive: isActive(item.url) })} group transition-all duration-200 ease-in-out transform hover:scale-105`}
+                    >
+                      <item.icon className="h-5 w-5 transition-transform duration-200 group-hover:scale-110" />
+                      {state !== "collapsed" && (
+                        <span className="ml-3 font-medium transition-all duration-200">
+                          {item.title}
+                        </span>
+                      )}
                     </NavLink>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
