@@ -18,9 +18,9 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <SidebarProvider>
-          <div className="min-h-screen flex w-full">
+          <div className="min-h-screen flex w-full bg-gray-950">
             <AppSidebar />
-            <div className="flex-1">
+            <div className="flex-1 flex flex-col">
               <Routes>
                 <Route path="/" element={
                   <>
