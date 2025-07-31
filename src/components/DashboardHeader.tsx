@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { User, LogOut } from "lucide-react";
+import { ThemeToggle } from "./ThemeToggle";
 
 interface DashboardHeaderProps {
   title: string;
@@ -19,6 +20,7 @@ export function DashboardHeader({ title }: DashboardHeaderProps) {
           <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
           <span className="font-medium">2,847 ออนไลน์</span>
         </div>
+        <ThemeToggle />
         <Button variant="ghost" className="text-muted-foreground hover:bg-accent hover:text-foreground gap-2 interactive-button">
           <User className="h-4 w-4" />
           ตัวตัดคุณ
