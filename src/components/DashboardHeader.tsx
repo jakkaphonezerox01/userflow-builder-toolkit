@@ -8,20 +8,23 @@ interface DashboardHeaderProps {
 
 export function DashboardHeader({ title }: DashboardHeaderProps) {
   return (
-    <header className="h-16 bg-gradient-to-r from-purple-800 to-purple-900 flex items-center justify-between px-6 text-white">
+    <header className="h-16 bg-gray-900 border-b border-gray-800 flex items-center justify-between px-6">
       <div className="flex items-center gap-4">
-        <SidebarTrigger className="text-white hover:bg-white/20" />
-        <h1 className="text-xl font-semibold">{title}</h1>
+        <SidebarTrigger className="text-gray-300 hover:bg-gray-800 hover:text-white rounded-lg" />
+        <h1 className="text-xl font-semibold text-white">{title}</h1>
       </div>
       
       <div className="flex items-center gap-3">
-        <Button variant="ghost" className="text-white hover:bg-white/20 gap-2">
+        <div className="flex items-center gap-2 text-green-400 text-sm">
+          <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+          <span>2,847 ออนไลน์</span>
+        </div>
+        <Button variant="ghost" className="text-gray-300 hover:bg-gray-800 hover:text-white gap-2">
           <User className="h-4 w-4" />
           ตัวตัดคุณ
         </Button>
-        <Button variant="ghost" className="text-white hover:bg-white/20 gap-2">
-          <LogOut className="h-4 w-4" />
-          ออกจากระบบ
+        <Button className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white gap-2">
+          เข้าสู่ระบบ
         </Button>
       </div>
     </header>
