@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AppSidebar } from "@/components/AppSidebar";
 import { DashboardHeader } from "@/components/DashboardHeader";
 import Index from "./pages/Index";
+import Leave from "./pages/Leave";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -26,6 +27,12 @@ const App = () => (
                   <>
                     <DashboardHeader title="แผงหลัก" />
                     <Index />
+                  </>
+                } />
+                <Route path="/leave" element={
+                  <>
+                    <DashboardHeader title="แจ้งลา" />
+                    <Leave />
                   </>
                 } />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
