@@ -9,6 +9,7 @@ import { DashboardHeader } from "@/components/DashboardHeader";
 import Index from "./pages/Index";
 import Leave from "./pages/Leave";
 import Orders from "./pages/Orders";
+import Reports from "./pages/Reports";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -40,6 +41,12 @@ const App = () => (
                   <>
                     <DashboardHeader title="สั่งซอง" />
                     <Orders />
+                  </>
+                } />
+                <Route path="/reports" element={
+                  <>
+                    <DashboardHeader title="รายงาน" />
+                    <Reports />
                   </>
                 } />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
